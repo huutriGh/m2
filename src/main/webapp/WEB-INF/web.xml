@@ -1,0 +1,21 @@
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>Main</servlet-name>
+    <servlet-class>com.aptech.MainServlet</servlet-class>
+    <init-param>
+      <param-name>productName</param-name>
+      <param-value>My Super Blog</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Main</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Main</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+</web-app>
