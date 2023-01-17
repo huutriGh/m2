@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
-
 @WebServlet(name = "Main")
 public class MainServlet extends HttpServlet {
 
     String product = "My Blog";
+    String connecString = "";
 
     @Override
     public void init() throws ServletException {
         product = getInitParameter("productName");
+        connecString = getServletContext().getInitParameter("connecString");
 
     }
 
@@ -27,7 +27,8 @@ public class MainServlet extends HttpServlet {
         resp.setContentType("text/xml");
         if (name != null) {
             resp.getWriter().write(String
-                    .format("<application><name> Hello, %s</name><product>%s</product></application>", name, product));
+                    .format("<application><name> Hello, %s</name><product>%s</product><connectionStr>%s</connectionStr></application>",
+                            name, product, connecString));
         } else {
             resp.getWriter().write(String.format("<msg>Please enter your name</msg>"));
         }
