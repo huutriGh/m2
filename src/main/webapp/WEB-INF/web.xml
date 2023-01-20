@@ -2,20 +2,13 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <context-param>
+    <param-name>productName</param-name>
+    <param-value>My super log</param-value>
+  </context-param>
   <servlet>
     <servlet-name>Main</servlet-name>
     <servlet-class>com.aptech.MainServlet</servlet-class>
-    <init-param>
-      <param-name>productName</param-name>
-      <param-value>My Super Blog</param-value>
-    </init-param>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>Main</servlet-name>
-    <url-pattern>/home</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>Main</servlet-name>
-    <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
+
 </web-app>
