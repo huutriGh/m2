@@ -1,6 +1,9 @@
-<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
 
-<web-app>
+
   <display-name>Archetype Created Web Application</display-name>
   <context-param>
     <param-name>productName</param-name>
@@ -10,5 +13,20 @@
     <servlet-name>Main</servlet-name>
     <servlet-class>com.aptech.MainServlet</servlet-class>
   </servlet>
+  <listener>
+    <listener-class>com.aptech.listeners.SimpleListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.aptech.listeners.AppInitialListener</listener-class>
+  </listener>
+  <listener>
+    <description>Initial Log4j 2.x</description>
+    <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+  </listener>
+  <session-config>
+    <session-timeout>10</session-timeout>
+    <tracking-mode>COOKIE</tracking-mode>
+  </session-config>
+  <distributable/>
 
 </web-app>

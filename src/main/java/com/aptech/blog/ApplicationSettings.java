@@ -19,6 +19,9 @@ public class ApplicationSettings {
     }
 
     public List<NewsItem> getNewsForTopic(int type) {
+        if(type==0){
+            return  getNewsItems().getNewsItems();
+        }
         var itemStream = getNewsItems().getNewsItems().stream().filter(t -> (t.topic() == type || t.topic() == 0));
         var items = itemStream.collect(Collectors.toList());
         return items;

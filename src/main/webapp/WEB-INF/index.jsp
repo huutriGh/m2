@@ -1,7 +1,8 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 <head>
-    <title><%= application.getInitParameter("productName")%>
+    <title>${initParam.productName}
     </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -11,15 +12,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body style="background-color: ${requestScope.color}">
 
 <%@include file="_header.jsp" %>
-<section class="container-fluid pt-3" >
+<section class="container px-4">
     <div class="row">
         <div class="col-sm-3">
-            <%@include file="_topics.jsp"%>
+            <c:import url="_topics.jsp"/>
+            <%--            <%@include file="_topics.jsp" %>--%>
         </div>
-        <div class="col-sm-9">dddddd</div>
+        <div class="col-8">
+            <c:choose>
+                <c:when test="${action eq 'login'}"><c:import url="_login.jsp"></c:import></c:when>
+                <c:otherwise><c:import url="_newsitems.jsp"></c:import></c:otherwise>
+            </c:choose>
+            <%--            <c:import url="_newsitems.jsp"/>--%>
+            <%--            <%@include file="_newsitems.jsp" %>--%>
+        </div>
     </div>
 </section>
 
