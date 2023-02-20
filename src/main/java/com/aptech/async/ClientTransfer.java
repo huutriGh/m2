@@ -1,9 +1,6 @@
 package com.aptech.async;
 
-import jakarta.servlet.AsyncContext;
-import jakarta.servlet.ServletContextListener;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
+import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebListener;
 
 import java.io.PrintWriter;
@@ -19,7 +16,7 @@ public class ClientTransfer implements ServletContextListener {
         clients.add(client);
     }
 
-    public void contextInitialized(ServletContextListener event) {
+    public void contextInitialized(ServletContextEvent event) {
         int count = 0;
         while (count < CLIENT_THREAD_COUNT) {
             executor.execute(this::sendDataToClient);
@@ -34,6 +31,7 @@ public class ClientTransfer implements ServletContextListener {
             var response = asyncContext.getResponse();
             var request = asyncContext.getRequest();
             response.setContentType("text/plain");
+            response.setContentLength(client.data.length());
             String dataChunk = client.getDataChunk();
             sendDataChunk(dataChunk, client, asyncContext);
         }

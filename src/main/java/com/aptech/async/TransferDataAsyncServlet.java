@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/downloadasync", asyncSupported = true)
+@WebServlet(urlPatterns = "/downloadAsync", asyncSupported = true)
 public class TransferDataAsyncServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -18,7 +18,7 @@ public class TransferDataAsyncServlet extends HttpServlet {
         ctx.addListener(new AsyncListener() {
             @Override
             public void onComplete(AsyncEvent asyncEvent) throws IOException {
-                log(String.format("TransferDataAsyncServlet onTimeout, thread id: %s",Thread.currentThread().getId()));
+                log(String.format("TransferDataAsyncServlet onComplete, thread id: %s",Thread.currentThread().getId()));
             }
 
             @Override
